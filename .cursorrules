@@ -1,0 +1,4 @@
+Follow `AGENTS.md` as root policy.
+Use `AGENTS.workflow.md` for commit/deploy flow.
+Use `AGENTS.docs.md` for docs/diagram updates.
+Use app-level `apps/*/AGENTS.md` for app commands.

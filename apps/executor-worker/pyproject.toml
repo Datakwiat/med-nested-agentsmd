@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "executor-worker"
+version = "1.0.0"
+requires-python = ">=3.11"
+dependencies = ["pytest", "pytest-cov", "pylint"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["function*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

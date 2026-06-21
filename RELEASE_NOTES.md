@@ -1,5 +1,14 @@
 # Release Notes
 
+## [0.3.1] - 2026-06-21
+
+### Changed
+- **backend-api:** Added `revision` field (`1`) to `GET /hello` example response
+- Updated backend API test expectations for the `GET /hello` payload
+
+### Coverage
+- Backend API test coverage: 100% (meets 85% threshold)
+
 ## [0.3.0] - 2026-06-18
 
 ### Changed

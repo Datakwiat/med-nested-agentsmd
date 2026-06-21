@@ -44,6 +44,7 @@ test('GET /hello returns hello-world payload', async () => {
     message: 'Hello, World!',
     service: 'backend-api',
     example: true,
+    revision: 1,
     variant: 'classic',
     audience: 'developers',
     tone: 'friendly',

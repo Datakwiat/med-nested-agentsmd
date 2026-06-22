@@ -4,16 +4,20 @@
 - Deploy only to branch-scoped or sandbox environments
 - For infrastructure changes, report impacted services, affected environments, rollback path, and worst-case impact
 
+## Architecture (Routing Summary)
+- frontend-app: React UI; authors and views data quality workflows.
+- backend-api: API gateway; validates requests, routes to converter and executor.
+- converter-service: Normalizes rule definitions into executable form.
+- executor-worker: Executes normalized rules and emits outcomes.
+
+### Interaction Path
+Primary route: frontend-app -> backend-api -> converter-service -> executor-worker
+
 ## Response Gate (Mandatory)
-- If any source code is edited in any module, follow the canonical pre-commit workflow in `AGENTS.workflow.md`, and create a commit before responding.
-- Use the active module's `apps/{module}/AGENTS.md` commands for lint, tests, and coverage.
-- Execute all workflow steps in order and report pass/fail per step before responding.
-- If any required step fails, do not proceed to user response.
-- After the mandatory commit for source changes, follow the CD deploy/smoke workflow in `AGENTS.workflow.md` to validate the commit.
-- Use the active module's `apps/{module}/AGENTS.md` commands for deploy and smoke, and report pass/fail.
-- If deploy or smoke fails, flag the failure and report rollback suggestion before responding.
+- If source code is edited, run `AGENTS.workflow.md` end-to-end before responding.
+- Use the active module's `apps/{module}/AGENTS.md` commands.
+- Report pass/fail by workflow stage; stop on required-stage failure and include rollback suggestion when deploy or smoke fails.
 
 ## Review (Automatic on Rearchitecting Changes)
 - Trigger when any indicator in `AGENTS.docs.md` is detected
 - Read `AGENTS.docs.md` and apply required doc and diagram updates
-
